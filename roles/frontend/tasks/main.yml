@@ -4,6 +4,12 @@
     name: nginx
     state: installed
 
+- name: Start Nginx Service
+  ansible.builtin.systemd:
+    state: restarted
+    name: nginx
+    enabled: true
+
 - name: Remove directory
   ansible.builtin.file:
     path: /usr/share/nginx/html
