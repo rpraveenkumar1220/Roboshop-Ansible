@@ -1,0 +1,45 @@
+
+- name: Setting up Frontend Component
+  ansible.builtin.debug:
+    msg: Component is {{ component }}
+  tasks:
+      - name: Installing Nginx Server
+        ansible.builtin.yum:
+         name: nginx
+         state: installed
+
+      - name: Remove directory
+        ansible.builtin.file:
+          path: /usr/share/nginx/html
+          state: absent
+
+      - name: Create directory
+        ansible.builtin.file:
+          path: /usr/share/nginx/html
+          state: directory
+
+      - name: Downloading Frontend content
+        ansible.builtin.get_url:
+            url: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+            dest: /tmp/component
+
+      - name: Extracting frontend content
+        ansible.builtin.unarchive:
+            src: /tmp/component
+            dest: /usr/share/nginx/html
+            remote_src: yes
+
+      - name: Copying roboshop configuration file
+        ansible.builtin.copy:
+            src: roboshop.conf
+            dest: /etc/nginx/default.d/roboshop.conf
+
+      - name: Restarting Nginx service
+        ansible.builtin.systemd:
+            name: nginx
+            state: restarted
+            enabled: true
+
+
+
+
