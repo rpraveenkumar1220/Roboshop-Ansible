@@ -2,7 +2,7 @@
 - name: Installing Nginx Server
   ansible.builtin.yum:
     name: nginx
-    state: latest
+    state: installed
 
 - name: Remove directory
   ansible.builtin.file:
@@ -25,11 +25,16 @@
     dest: /usr/share/nginx/html
     remote_src: yes
 
+- name: Copying roboshop configuration file
+  ansible.builtin.copy:
+    src: roboshop.conf
+    dest: /etc/nginx/default.d/roboshop.conf
+
 - name: Restarting Nginx service
   ansible.builtin.systemd:
     name: nginx
     state: restarted
-    enabled: true
+    enabled: yes
 
 
 
