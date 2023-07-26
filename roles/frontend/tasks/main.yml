@@ -14,14 +14,11 @@
     path: /usr/share/nginx/html
     state: directory
 
-- name: Downloading Frontend content
-  ansible.builtin.get_url:
-    url: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
-    dest: /tmp/component
+- name: Downloading and extracting
 
-- name: Extracting frontend content
+  Frontend content
   ansible.builtin.unarchive:
-    src: /tmp/component
+    src: https://roboshop-artifacts.s3.amazonaws.com/{{ component }}.zip
     dest: /usr/share/nginx/html
     remote_src: yes
 
