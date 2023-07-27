@@ -1,0 +1,12 @@
+- name: Copying mongodb repo file
+  ansible.builtin.copy:
+    src: mongodb.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Installing MongoDB
+  ansible.builtin.yum:
+    name: mongodb-org-shell
+    state: installed
+
+-name: Loading schema
+  ansible.builtin.shell: mongo --host mongodb-dev.devopskumar.site  </app/schema/catalogue.js
