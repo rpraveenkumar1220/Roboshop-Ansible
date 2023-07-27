@@ -1,0 +1,26 @@
+- name: Installing maven
+  ansible.builtin.yum:
+    name: maven
+    state: installed
+
+- name: Loading Application setup
+  ansible.builtin.import_tasks:
+    file: app_setup.yml
+
+- name: Cleaning maven package
+  ansible.builtin.shell: mvn clean package ;  mv target/shipping-1.0.jar shipping.jar
+  args:
+    chdir: /app
+
+- name: Copying service configuration file
+  ansible.builtin.copy:
+    src: shipping.service
+    des: /etc/systemd/system/shipping.service
+
+- name: Loading schema
+  ansible.builtin.import_tasks:
+    file: mysql_setup.yml
+
+- name: Loading Systemd service
+  ansible.builtin.import_tasks:
+    file: system_service_setup.yml

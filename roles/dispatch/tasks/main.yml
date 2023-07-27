@@ -1,0 +1,4 @@
+- name: Loading golang
+  ansible.builtin.import.role:
+    name: common
+    tasks_from: golang

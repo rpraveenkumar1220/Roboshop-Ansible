@@ -7,19 +7,17 @@
     state: installed
 
 - name: Loading Application setup
-  ansible.builtin.import.role:
-    name: common
-    tasks_from: app_setup
+  ansible.builtin.import_tasks:
+    file: app_setup.yml
 
 - name: Installing Dependencies
   ansible.builtin.shell: npm install
   args:
     chdir: /app
 
-- name: Loading systemd service setup
-  ansible.builtin.import.role:
-    name: common
-    tasks_from: systemd_service_setup
+- name: Loading Systemd service
+  ansible.builtin.import_tasks:
+    file: system_service_setup.yml
 
 - name: Loading mongodb setup
   ansible.builtin.import.role:

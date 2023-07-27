@@ -1,0 +1,4 @@
+- name: Loading python
+  ansible.builtin.import.role:
+    name: common
+    tasks_from: python

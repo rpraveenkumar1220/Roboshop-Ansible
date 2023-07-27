@@ -1,0 +1,137 @@
+- name: Disabling latest version
+  ansible.builtin.shell: yum module disable mysql -y
+
+- name: Copying mysql repo file
+  ansible.builtin.copy:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
+
+
+- name: Installing Mysql
+  ansible.builtin.yum:
+    name: mysql-community-server
+    state: installed
+
+- name: Starting mysql service
+  ansible.builtin.systemd:
+    name: mysqld
+    state: restarted
+    enabled: true
+
+- name: Disabling latest version
+  ansible.builtin.shell: yum module disable mysql -y
+
+- name: Changing the password to mysql
+  ansible.builtin.shell: mysql_secure_installation --set-root-pass RoboShop@1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
