@@ -20,7 +20,7 @@
     file: systemd_service_setup.yml
 
 - name: Loading mongodb setup
-  ansible.builtin.import.role:
+  ansible.builtin.import_tasks:
     name: common
     tasks_from: mongodb_setup
 
