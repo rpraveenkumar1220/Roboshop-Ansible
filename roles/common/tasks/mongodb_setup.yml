@@ -8,5 +8,5 @@
     name: mongodb-org-shell
     state: installed
 
--name: Loading schema
+- name: Loading schema
   ansible.builtin.shell: mongo --host mongodb-dev.devopskumar.site  </app/schema/catalogue.js
