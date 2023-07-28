@@ -9,4 +9,4 @@
     state: installed
 
 - name: Loading schema
-  ansible.builtin.shell: mongo --host mongodb-dev.devopskumar.site  </app/schema/catalogue.js
+  ansible.builtin.shell: mongo --host mongodb-dev.devopskumar.site  </app/schema/{{ component }}.js
