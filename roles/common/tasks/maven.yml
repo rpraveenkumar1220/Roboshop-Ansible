@@ -12,15 +12,11 @@
   args:
     chdir: /app
 
-- name: Copying service configuration file
-  ansible.builtin.copy:
-    src: shipping.service
-    des: /etc/systemd/system/shipping.service
+- name: Loading Systemd service
+  ansible.builtin.import_tasks:
+    file: systemd_service_setup.yml
 
 - name: Loading schema
   ansible.builtin.import_tasks:
     file: mysql_setup.yml
 
-- name: Loading Systemd service
-  ansible.builtin.import_tasks:
-    file: systemd_service_setup.yml
