@@ -14,9 +14,7 @@
     path: /usr/share/nginx/html
     state: directory
 
-- name: Downloading and extracting
-
-  Frontend content
+- name: Downloading and extracting Frontend content
   ansible.builtin.unarchive:
     src: https://roboshop-artifacts.s3.amazonaws.com/{{ component }}.zip
     dest: /usr/share/nginx/html
