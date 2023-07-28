@@ -21,8 +21,7 @@
 
 - name: Loading mongodb setup
   ansible.builtin.import_tasks:
-    name: common
-    file: mongodb_setup.yml
+     file: mongodb_setup.yml
 
 
 
