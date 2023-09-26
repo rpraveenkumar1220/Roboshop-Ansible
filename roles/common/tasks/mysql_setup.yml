@@ -4,4 +4,4 @@
     state: installed
 
 - name: Loading Schema
-  ansible.builtin.shell: mysql -h mysql-dev.devopskumar.site -uroot -pRoboShop@1 < /app/schema/shipping.sql
+  ansible.builtin.shell: mysql -h mysql-{{env}}.devopskumar.site -uroot -pRoboShop@1 < /app/schema/shipping.sql
