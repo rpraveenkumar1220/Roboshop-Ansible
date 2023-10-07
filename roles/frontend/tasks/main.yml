@@ -30,6 +30,11 @@
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
+- name : Installing Filebeat
+  ansible.builtin.import_role:
+    name : elk
+    tasks_from : filebeat.yml
+
 - name: Start Nginx Service
   ansible.builtin.systemd:
     state: restarted
