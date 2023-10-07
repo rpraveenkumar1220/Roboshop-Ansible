@@ -6,5 +6,5 @@
 - name : Restarting Logstash service
   ansible.builtin.systemd:
     name : logstash
-    state : installed
+    state : restarted
     enabled : true
