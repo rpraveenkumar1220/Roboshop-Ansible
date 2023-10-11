@@ -33,7 +33,7 @@
 - name : Installing Filebeat
   ansible.builtin.import_role:
     name : elk
-    tasks_from : filebeat.yml
+    tasks_from : filebeat
 
 - name: Start Nginx Service
   ansible.builtin.systemd:
