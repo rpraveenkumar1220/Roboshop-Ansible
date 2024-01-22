@@ -32,7 +32,7 @@ scrape_configs:
       - name: "tag:Monitor"
         values: [ "true", "yes" ]
     relabel_configs:
-    - source-labels: [ __meta_ec2_tag_Name]
+    - source-labels: [ __meta_ec2_tag_Name ]
       target_label: component
 #    { % for item in tags % }
 #    - source_labels: [ __meta_ec2_tag_{{item}} ]
