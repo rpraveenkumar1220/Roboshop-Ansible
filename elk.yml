@@ -1,6 +1,6 @@
 - name : Setting up ELK for Roboshop
   hosts : localhost
-  become: true
+  become: yes
   connection : local
   roles :
     - elk
