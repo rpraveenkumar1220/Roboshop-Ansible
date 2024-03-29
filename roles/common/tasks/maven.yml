@@ -1,16 +1,22 @@
-- name: Installing maven
+#- name: Installing maven
+#  ansible.builtin.yum:
+#    name: maven
+#    state: installed
+
+- name: Install Java
   ansible.builtin.yum:
-    name: maven
+    name: java-17-openjdk
     state: installed
 
 - name: Loading Application setup
   ansible.builtin.import_tasks:
     file: app_setup.yml
 
-- name: Cleaning maven package
-  ansible.builtin.shell: mvn clean package ;  mv target/shipping-1.0.jar shipping.jar
-  args:
-    chdir: /app
+### CI pipelie covers this
+#- name: Cleaning maven package
+#  ansible.builtin.shell: mvn clean package ;  mv target/shipping-1.0.jar shipping.jar
+#  args:
+#    chdir: /app
 
 - name: Loading Systemd service
   ansible.builtin.import_tasks:
